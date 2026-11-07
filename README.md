@@ -26,13 +26,16 @@ Requires [uv](https://docs.astral.sh/uv/). Dependencies are in `pyproject.toml`,
 `uv run` creates `.venv` in the project automatically.
 
 ```sh
-claude mcp add --scope user qnx-docs -- uv run -q --directory /Users/rose/qnx-docs-mcp server.py
+git clone https://github.com/gavin-rose/qnx-docs-mcp.git
+cd qnx-docs-mcp
+claude mcp add --scope user qnx-docs -- uv run -q --directory "$PWD" server.py
 ```
 
 Remove it with `claude mcp remove qnx-docs -s user`.
 
-Other MCP clients (Claude Desktop, Cursor, ...) use the same command,
-`uv run -q --directory /Users/rose/qnx-docs-mcp server.py`, over stdio.
+Other MCP clients (Claude Desktop, Cursor, ...) run the same command over stdio. Their config
+files need the full path to your clone:
+`uv run -q --directory /path/to/qnx-docs-mcp server.py`.
 
 ## Development
 
